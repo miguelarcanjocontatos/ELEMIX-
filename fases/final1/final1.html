@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final 1</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            opacity: 0; /* Começa invisível */
+            transition: opacity 3s ease-in; /* Fade in em 3 segundos */
+        }
+
+        .lapide {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .lapide h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .lapide p {
+            font-size: 18px;
+            line-height: 1.5;
+            font-weight: bold;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="lapide">
+        <h1>FINAL 1: Final neutro</h1>
+        <p>Animais terrestres são um bom começo para uma civilização, porém sem o tempo necessário, nada mudou. A vida inteligente nunca se desenvolveu, o que chegou mais perto dos humanos que você conhece foram bípedes que grunhiam para se comunicar, mas não sobreviveram por escolha da mãe natureza, os seus cérebros definharam durante a evolução. Esse é o fim do seu mundo, um lugar com paz, altos níveis de ozônio e apenas a natureza. Você viveu até o fim dele.</p>
+    </div>
+
+    <script>
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '1'; // Torna o body visível após o carregamento
+        });
+    </script>
+</body>
+</html>

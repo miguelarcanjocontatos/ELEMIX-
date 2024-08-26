@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elemix - Tela Inicial</title>
+    <link rel="stylesheet" href="styles1.css">
+</head>
+<body>
+    <div class="container">
+        <div class="title">ELEMIX!</div>
+        <a href="#" class="start-button" onclick="startGame()">Jogar</a>
+        <button class="credits-button" onclick="showCredits()">Créditos</button>
+    </div>
+
+    <div class="credits-modal" id="creditsModal">
+        <div class="credits-content">
+            <button class="close-button" onclick="closeCredits()">Fechar</button>
+            <h2>Créditos</h2>
+            <p>Desenvolvedores:</p>
+            <ul>
+                <li class="rainbow-text">Desenvolvedor> Miguel Arcanjo Araújo de Sousa</li>
+                <li class="rainbow-text">Game Designer> Pedro Cavalcanti</li>
+                <li class="rainbow-text">Ilustrador/Concept> Jonathan Julio</li>
+                <li class="rainbow-text">Produtora> Jennifer Kelly</li>
+            </ul>
+            <p>Obrigado por jogar!</p>
+        </div>
+    </div>
+
+    <div class="message-container" id="messageContainer" style="display: none;"></div>
+
+    <script src="script1.js"></script>
+</body>
+</html>
