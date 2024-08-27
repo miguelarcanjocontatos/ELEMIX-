@@ -8,7 +8,7 @@ canvas.height = window.innerHeight;
 let elementos = [];
 const progressBar = document.getElementById('progress-bar');
 let progressoAtual = 0;
-const totalElementos = 20; // Número total de elementos que podem ser criados
+const totalElementos = 28; // Número total de elementos que podem ser criados
 
 // Função para atualizar a barra de progresso
 function atualizarProgresso() {
@@ -126,7 +126,7 @@ function misturarElementos(elemento1, elemento2) {
         },
         'ambicao-armasnucleares': {
             imageSrc: 'elementos/guerranuclear.png',
-            descricao: 'Guerra Nuclear criada!' //guerra +2
+            descricao: 'Guerra Nuclear alcançada!' //guerra +2
         },
         'dinheiro-etica': {
             imageSrc: 'elementos/sociedade.png',
@@ -154,7 +154,7 @@ function misturarElementos(elemento1, elemento2) {
         },
         'conscientizacao-justica': {
             imageSrc: 'elementos/pazmundial.png',
-            descricao: 'Paz Mundial criada!' // paz+2
+            descricao: 'Paz Mundial alcançada!' // paz+2
         },//aq
         'ambicao-filosofia': {
             imageSrc: 'elementos/controle.png',
@@ -163,10 +163,31 @@ function misturarElementos(elemento1, elemento2) {
         'ferramentassofisticadas-tecnologia': {
             imageSrc: 'elementos/computador.png',
             descricao: 'Computador criado!'
+        },
+        'fe-ferramentas': {
+            imageSrc: 'elementos/livrosagrado.png',
+            descricao: 'Livro Sagrado criado!' //deus
+        },
+        'fe-livrosagrado': {
+            imageSrc: 'elementos/conexaoespiritual.png',
+            descricao: 'Conexão Espiritual criada!' //deus
+        },
+        'fe-filosofia': {
+            imageSrc: 'elementos/teologia.png',
+            descricao: 'Teologia criada!' //deus
+        },
+        'sociedade-teologia': {
+            imageSrc: 'elementos/lideresreligiosos.png',
+            descricao: 'Lideres Religiosos criados!' //deus
+        },
+        'ferramentassofisticadas-maquina': {
+            imageSrc: 'elementos/construcao.png',
+            descricao: 'Construções criadas!'
+        },
+        'construcao-fe': {
+            imageSrc: 'elementos/templo.png',
+            descricao: 'Templo religioso criado!' //deus
         }
-
-
-
 
     };
 
