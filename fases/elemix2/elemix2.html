@@ -7,41 +7,38 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="jogo">
-        <div id="hotbar">
-            <div class="hotbar-item-container">
-                <img src="elementos/conhecimento.png" class="hotbar-item" draggable="true" id="conhecimento" />
-                <span class="hotbar-item-name">Conhecimento</span>
-            </div>
-            <div class="hotbar-item-container">
-                <img src="elementos/ferramentas.png" class="hotbar-item" draggable="true" id="ferramentas" />
-                <span class="hotbar-item-name">Ferramentas</span>
-            </div>
-            <div class="hotbar-item-container">
-                <img src="elementos/energia.png" class="hotbar-item" draggable="true" id="energia" />
-                <span class="hotbar-item-name">Energia</span>
-            </div>
-            <div class="hotbar-item-container">
-                <img src="elementos/ambicao.png" class="hotbar-item" draggable="true" id="ambicao" />
-                <span class="hotbar-item-name">Ambição</span>
-            </div>
-            <div class="hotbar-item-container">
-                <img src="elementos/fe.png" class="hotbar-item" draggable="true" id="fe" />
-                <span class="hotbar-item-name">Fé</span>
-            </div>
+    <div id="progress-bar-container">
+        <div id="progress-bar"></div>
+    </div>
+    <div id="hotbar">
+        <div class="hotbar-item-container">
+            <img src="elementos/conhecimento.png" class="hotbar-item" draggable="true" id="conhecimento"
+                data-tipo="paz" />
+            <span class="hotbar-item-name">Conhecimento</span>
         </div>
-        <div id="lixeira">
-            <p>🗑️</p>
+        <div class="hotbar-item-container">
+            <img src="elementos/ferramentas.png" class="hotbar-item" draggable="true" id="ferramentas"
+                data-tipo="neutro" />
+            <span class="hotbar-item-name">Ferramentas</span>
         </div>
-        <canvas id="canvas"></canvas>
-        <div id="evoluir">
-            <h2>EVOLUIR!</h2>
-            <div id="contadores">
-                <p><strong>Guerra:</strong> <span id="contador-guerra">0</span></p>
-                <p><strong>Paz:</strong> <span id="contador-paz">0</span></p>
-            </div>
+        <div class="hotbar-item-container">
+            <img src="elementos/energia.png" class="hotbar-item" draggable="true" id="energia" data-tipo="neutro" />
+            <span class="hotbar-item-name">Energia</span>
+        </div>
+        <div class="hotbar-item-container">
+            <img src="elementos/ambicao.png" class="hotbar-item" draggable="true" id="ambicao" data-tipo="guerra" />
+            <span class="hotbar-item-name">Ambição</span>
+        </div>
+        <div class="hotbar-item-container">
+            <img src="elementos/fe.png" class="hotbar-item" draggable="true" id="fe" data-tipo="paz" />
+            <span class="hotbar-item-name">Fé</span>
         </div>
     </div>
+    <div id="lixeira">
+        <p>🗑️</p>
+    </div>
+    <canvas id="canvas"></canvas>
     <script src="script.js"></script>
 </body>
+
 </html>

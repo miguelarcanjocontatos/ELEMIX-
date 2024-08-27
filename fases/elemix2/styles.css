@@ -3,6 +3,27 @@ body {
     overflow: hidden; /* Remove barras de rolagem no body */
 }
 
+#progress-bar-container {
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50%; /* Reduzido de 80% para 50% */
+    height: 20px;
+    background-color: #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    z-index: 1000;
+}
+
+#progress-bar {
+    width: 0%;
+    height: 100%;
+    background-color: #4caf50;
+    border-radius: 10px;
+    transition: width 0.5s ease-in-out;
+}
+
 #hotbar {
     position: fixed;
     top: 0;
@@ -76,8 +97,6 @@ body {
 }
 
 
-
-
 canvas {
     margin-left: 200px; /* Move o canvas para a direita, para que a hotbar não o sobreponha */
     display: block;
@@ -118,31 +137,4 @@ canvas {
     font-size: 16px;
     z-index: 1000;
 }
-
-
-/* Estilo existente para o body, canvas, hotbar, etc. */
-
-#evoluir {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    width: 200px;
-    background-color: rgba(0, 0, 0, 0.8);
-    color: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-    z-index: 10;
-    text-align: center;
-}
-
-#contadores p {
-    margin: 10px 0;
-}
-
-#contadores strong {
-    display: block;
-    font-size: 16px;
-}
-
 

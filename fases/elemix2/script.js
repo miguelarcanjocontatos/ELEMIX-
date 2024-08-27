@@ -6,8 +6,20 @@ canvas.width = window.innerWidth - hotbarWidth;
 canvas.height = window.innerHeight;
 
 let elementos = [];
+const progressBar = document.getElementById('progress-bar');
+let progressoAtual = 0;
+const totalElementos = 20; // Número total de elementos que podem ser criados
 
-function adicionarElemento(imageSrc, x, y, tipo = 'neutro') {
+// Função para atualizar a barra de progresso
+function atualizarProgresso() {
+    progressoAtual++;
+    const progressoPercentual = Math.min((progressoAtual / totalElementos) * 100, 100);
+    progressBar.style.width = `${progressoPercentual}%`;
+}
+
+// Função para adicionar um novo elemento ao canvas
+function adicionarElemento(imageSrc, x, y) {
+    // Verifica se o elemento já existe
     const existeElemento = elementos.some(e => e.imageSrc === imageSrc && e.x === x && e.y === y);
     if (existeElemento) return;
 
@@ -16,7 +28,6 @@ function adicionarElemento(imageSrc, x, y, tipo = 'neutro') {
         y: y,
         size: 75,
         imageSrc: imageSrc,
-        tipo: tipo, // Adiciona o tipo
         dragging: false
     };
 
@@ -29,11 +40,13 @@ function adicionarElemento(imageSrc, x, y, tipo = 'neutro') {
     adicionarElementoNaHotbar(imageSrc);
 }
 
+// Função para remover todos os elementos do canvas
 function removerTodosElementos() {
     elementos = [];
     desenharelementos();
 }
 
+// Função para desenhar todos os elementos no canvas
 function desenharelementos() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     elementos.forEach(q => {
@@ -41,6 +54,7 @@ function desenharelementos() {
     });
 }
 
+// Função para obter a posição do mouse
 function getMousePos(e) {
     return {
         x: e.clientX - hotbarWidth,
@@ -48,47 +62,112 @@ function getMousePos(e) {
     };
 }
 
+// Função para verificar a sobreposição de dois elementos
 function verificarSobreposicao(elemento1, elemento2) {
     return elemento1.x === elemento2.x && elemento1.y === elemento2.y;
 }
 
+// Função para misturar dois elementos
 function misturarElementos(elemento1, elemento2) {
     const nome1 = elemento1.imageSrc.split('/').pop().split('.').shift();
     const nome2 = elemento2.imageSrc.split('/').pop().split('.').shift();
 
+    // Normaliza a combinação para verificar mistura em qualquer ordem
     const combinacao = [nome1, nome2].sort().join('-');
 
     const novasImagens = {
-        'ambicao-ferramentas': {
+        'ambicao-ferramentassofisticadas': {
             imageSrc: 'elementos/armas.png',
-            descricao: 'Armas criadas CUIDADO!',
-            tipo: 'guerra' // Define o tipo como guerra
+            descricao: 'Armas criadas!' //guerra
         },
         'energia-ferramentas': {
             imageSrc: 'elementos/maquina.png',
-            descricao: 'Maquinas criadas!',
-            tipo: 'neutro'
+            descricao: 'Maquinas criadas!' // deus
         },
         'ambicao-conhecimento': {
             imageSrc: 'elementos/tecnologia.png',
-            descricao: 'Tecnologia criada!',
-            tipo: 'neutro'
+            descricao: 'Tecnologia criada!' //paz
         },
         'tecnologia-tecnologia': {
-            imageSrc: 'elementos/tecnologia.png',
-            descricao: 'IMD criado! (EASTER EGG)',
-            tipo: 'neutro'
+            imageSrc: 'elementos/imd.png',
+            descricao: 'IMD criado! (EASTER EGG)'
         },
         'energia-tecnologia': {
             imageSrc: 'elementos/computacao.png',
-            descricao: 'Computação criada!',
-            tipo: 'neutro'
+            descricao: 'Computação criada!'
         },
         'conhecimento-fe': {
             imageSrc: 'elementos/filosofia.png',
-            descricao: 'Filosofia criada!',
-            tipo: 'paz' // Define o tipo como paz
+            descricao: 'Filosofia criada!' //paz
+        },
+        'conhecimento-ferramentas': {
+            imageSrc: 'elementos/ferramentassofisticadas.png',
+            descricao: 'Ferramentas Sofisticadas criadas!' // deus
+        },
+        'ambicao-ferramentas': {
+            imageSrc: 'elementos/dinheiro.png',
+            descricao: 'Dinheiro criado!' //guerra
+        },
+        'filosofia-tecnologia': {
+            imageSrc: 'elementos/etica.png',
+            descricao: 'Ética criada!' //paz
+        },
+        'armas-tecnologia': {
+            imageSrc: 'elementos/armasavancadas.webp',
+            descricao: 'Armas avançadas criadas!' //guerra
+        },
+        'energia-energia': {
+            imageSrc: 'elementos/nuclear.png',
+            descricao: 'Energia Nuclear criada!' // deus
+        },
+        'armasavancadas-nuclear': {
+            imageSrc: 'elementos/armasnucleares.png',
+            descricao: 'Armas Nucleares criadas!' //guerra
+        },
+        'ambicao-armasnucleares': {
+            imageSrc: 'elementos/guerranuclear.png',
+            descricao: 'Guerra Nuclear criada!' //guerra +2
+        },
+        'dinheiro-etica': {
+            imageSrc: 'elementos/sociedade.png',
+            descricao: 'Sociedade criada!' // deus
+        },
+        'armas-sociedade': {
+            imageSrc: 'elementos/crime.png',
+            descricao: 'Crime criado!' // guerra
+        },
+        'etica-sociedade': {
+            imageSrc: 'elementos/conscientizacao.png',
+            descricao: 'Conscientização criada!' // paz
+        },
+        'conscientizacao-tecnologia': {
+            imageSrc: 'elementos/educacao.png',
+            descricao: 'Educação criada!' // paz
+        },
+        'educacao-sociedade': {
+            imageSrc: 'elementos/equidade.png',
+            descricao: 'Equidade criada!' // paz
+        },
+        'equidade-etica': {
+            imageSrc: 'elementos/justica.png',
+            descricao: 'Justiça criada!' // paz
+        },
+        'conscientizacao-justica': {
+            imageSrc: 'elementos/pazmundial.png',
+            descricao: 'Paz Mundial criada!' // paz+2
+        },//aq
+        'ambicao-filosofia': {
+            imageSrc: 'elementos/controle.png',
+            descricao: 'Controle De Massas criada!' // guerra
+        },
+        'ferramentassofisticadas-tecnologia': {
+            imageSrc: 'elementos/computador.png',
+            descricao: 'Computador criado!'
         }
+
+
+
+
     };
 
     if (novasImagens[combinacao]) {
@@ -98,7 +177,6 @@ function misturarElementos(elemento1, elemento2) {
                 y: elemento1.y,
                 size: 75,
                 imageSrc: novasImagens[combinacao].imageSrc,
-                tipo: novasImagens[combinacao].tipo, // Define o tipo do novo elemento
                 dragging: false
             };
 
@@ -117,18 +195,22 @@ function misturarElementos(elemento1, elemento2) {
         exibirMensagem("A mistura não resultou em nada.");
     }
 
+    // Remove os elementos misturados
     removerTodosElementos();
 }
 
+// Função para adicionar um elemento à hotbar
 function adicionarElementoNaHotbar(imageSrc) {
     const hotbar = document.getElementById('hotbar');
 
+    // Cria um ID único para o novo item
     const id = imageSrc.split('/').pop().split('.').shift();
-    
+
+    // Verifica se o item já existe na hotbar
     if (!document.getElementById(id)) {
         const container = document.createElement('div');
         container.className = 'hotbar-item-container';
-        
+
         const img = document.createElement('img');
         img.src = imageSrc;
         img.className = 'hotbar-item';
@@ -137,18 +219,23 @@ function adicionarElementoNaHotbar(imageSrc) {
 
         const span = document.createElement('span');
         span.className = 'hotbar-item-name';
-        span.innerText = id.charAt(0).toUpperCase() + id.slice(1);
+        span.innerText = id.charAt(0).toUpperCase() + id.slice(1); // Exibe o nome do item
 
-        img.addEventListener('dragstart', function(e) {
+        // Adiciona o evento de dragstart para o novo item
+        img.addEventListener('dragstart', function (e) {
             e.dataTransfer.setData('text/plain', id);
         });
 
         container.appendChild(img);
         container.appendChild(span);
         hotbar.appendChild(container);
+
+        // Atualiza a barra de progresso
+        atualizarProgresso();
     }
 }
 
+// Função para exibir mensagens na tela
 function exibirMensagem(mensagem) {
     const mensagemElemento = document.createElement('div');
     mensagemElemento.className = 'mensagem';
@@ -157,9 +244,10 @@ function exibirMensagem(mensagem) {
 
     setTimeout(() => {
         mensagemElemento.remove();
-    }, 3000);
+    }, 4000); // A mensagem desaparece após 3 segundos
 }
 
+// Configura os eventos de arraste e adição de elementos no canvas
 canvas.addEventListener('mousedown', iniciarArraste);
 canvas.addEventListener('mousemove', arrastar);
 canvas.addEventListener('mouseup', pararArraste);
@@ -197,17 +285,18 @@ function pararArraste() {
     });
 }
 
+// Configura o evento de arraste e adição de elementos da hotbar
 document.querySelectorAll('.hotbar-item').forEach(item => {
-    item.addEventListener('dragstart', function(e) {
+    item.addEventListener('dragstart', function (e) {
         e.dataTransfer.setData('text/plain', item.id);
     });
 });
 
-canvas.addEventListener('dragover', function(e) {
+canvas.addEventListener('dragover', function (e) {
     e.preventDefault();
 });
 
-canvas.addEventListener('drop', function(e) {
+canvas.addEventListener('drop', function (e) {
     e.preventDefault();
     const id = e.dataTransfer.getData('text/plain');
     const imgSrc = document.getElementById(id).src;
@@ -215,55 +304,23 @@ canvas.addEventListener('drop', function(e) {
     adicionarElemento(imgSrc, mousePos.x, mousePos.y);
 });
 
+// Configura o evento de clique na lixeira para remover todos os elementos
 const lixeira = document.getElementById('lixeira');
-lixeira.addEventListener('click', function() {
+
+lixeira.addEventListener('click', function () {
     removerTodosElementos();
 });
 
-// Função para verificar se algum elemento está próximo da área de evoluir
-function verificarProximidadeEvoluir() {
-    const evoluirArea = document.getElementById('evoluir');
-    const evoluirRect = evoluirArea.getBoundingClientRect();
-    const distanciaMinima = 50;
 
-    elementos = elementos.filter(elemento => {
-        const elementoRect = {
-            left: elemento.x + hotbarWidth,
-            top: elemento.y,
-            right: elemento.x + hotbarWidth + elemento.size,
-            bottom: elemento.y + elemento.size
-        };
+desenharelementos();
 
-        const isCloseToEvoluir = (
-            elementoRect.right >= evoluirRect.left - distanciaMinima &&
-            elementoRect.left <= evoluirRect.right + distanciaMinima &&
-            elementoRect.bottom >= evoluirRect.top - distanciaMinima &&
-            elementoRect.top <= evoluirRect.bottom + distanciaMinima
-        );
 
-        if (isCloseToEvoluir) {
-            console.log('Elemento próximo a evoluir:', elemento.imageSrc, elemento.tipo); // Log de depuração
 
-            // Verifica se o elemento tem um tipo associado e processa conforme o tipo
-            if (elemento.tipo) {
-                if (elemento.tipo === "guerra") {
-                    const contadorGuerra = document.getElementById('contador-guerra');
-                    contadorGuerra.textContent = parseInt(contadorGuerra.textContent) + 1;
-                    console.log('Incrementando contador de guerra');
-                } else if (elemento.tipo === "paz") {
-                    const contadorPaz = document.getElementById('contador-paz');
-                    contadorPaz.textContent = parseInt(contadorPaz.textContent) + 1;
-                    console.log('Incrementando contador de paz');
-                }
-                return false; // Remove o elemento da lista
-            }
-        }
 
-        return true; // Mantém o elemento na lista
-    });
 
-    desenharelementos();
-}
 
-// Configura o intervalo para verificar a proximidade a cada 1 segundo
-setInterval(verificarProximidadeEvoluir, 1000);
+
+
+
+
+

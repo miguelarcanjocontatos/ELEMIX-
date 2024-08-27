@@ -6,6 +6,20 @@ canvas.width = window.innerWidth - hotbarWidth;
 canvas.height = window.innerHeight;
 
 let elementos = [];
+let backgroundImage = new Image();
+backgroundImage.src = 'elementos/background.png'; // Caminho da imagem de fundo
+
+let progressoAtual = 0;
+const totalElementos = 16; // Número total de elementos que podem ser criados
+const progressBar = document.getElementById('progress-bar');
+
+// Função para atualizar a barra de progresso
+function atualizarProgresso() {
+    progressoAtual++;
+    const progressoPercentual = Math.min((progressoAtual / totalElementos) * 100, 100);
+    progressBar.style.width = `${progressoPercentual}%`;
+}
+
 
 // Função para adicionar um novo elemento ao canvas
 function adicionarElemento(imageSrc, x, y) {
@@ -38,11 +52,16 @@ function removerTodosElementos() {
 
 // Função para desenhar todos os elementos no canvas
 function desenharelementos() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    // Desenha a imagem de fundo
+    ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
+
+    // Desenha os elementos
     elementos.forEach(q => {
         ctx.drawImage(q.image, q.x, q.y, q.size, q.size);
     });
 }
+
+backgroundImage.onload = desenharelementos; // Redesenha o canvas quando a imagem de fundo carregar
 
 // Função para obter a posição do mouse
 function getMousePos(e) {
@@ -118,6 +137,18 @@ function misturarElementos(elemento1, elemento2) {
             imageSrc: 'elementos/ednaldo.png',
             descricao: 'Ednaldo Pereira criado! (EASTER EGG)'
         },
+		'fogo-terra': {
+            imageSrc: 'elementos/vidro.jpg',
+            descricao: 'Vidro criado!'
+        },
+		'lago-vida': {
+            imageSrc: 'elementos/monstro.webp',
+            descricao: 'Monstro do Lago Ness criado!'
+        },
+		'mar-terra': {
+            imageSrc: 'elementos/praia.png',
+            descricao: 'Praia criada!'
+        }
 		
     };
 
@@ -181,6 +212,9 @@ function adicionarElementoNaHotbar(imageSrc) {
         container.appendChild(img);
         container.appendChild(span);
         hotbar.appendChild(container);
+
+        // Atualiza a barra de progresso
+        atualizarProgresso();
     }
 }
 
