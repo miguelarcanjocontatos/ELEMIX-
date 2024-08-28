@@ -23,6 +23,7 @@ Estrutura do Projeto
 index.html: Arquivo principal do jogo, contendo a estrutura HTML.
 styles.css: Folha de estilo responsável pelo design visual do jogo.
 script.js: Script JavaScript responsável pela lógica de jogo e manipulação de elementos.
+finalx.html: Arquivos que guardam os finais possíveis.
 
 Como Jogar
 Início: Arraste os elementos iniciais (Fogo, Terra, Água, Ar) da hotbar para o canvas.
