@@ -104,6 +104,7 @@ canvas {
     background-size: cover; /* Ajusta o tamanho da imagem para cobrir o canvas */
     background-position: center; /* Centraliza a imagem */
     background-repeat: no-repeat; /* Impede a repetição da imagem */
+    transition: background-image 1s ease-in-out; /* Transição suave de 1 segundo */
 }
 
 
@@ -136,5 +137,279 @@ canvas {
     border-radius: 5px;
     font-size: 16px;
     z-index: 1000;
+}
+
+#menu-button {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    font-size: 16px;
+}
+
+/* Adicione este bloco ao seu arquivo styles.css */
+
+/* Estilo para os botões dentro do menu modal */
+#menu-modal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    top: 60px; /* Ajuste conforme necessário */
+    right: 20px; /* Ajuste conforme necessário */
+    background-color: #5c5c5c;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+#menu-modal button {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #333;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 5px 0; /* Espaçamento consistente entre os botões */
+    box-sizing: border-box; /* Garante que o padding não afete o tamanho total */
+}
+
+#menu-modal button:hover {
+    background-color: #555;
+}
+
+/* Adiciona o mesmo efeito de hover aos outros botões */
+#show-combinations, #show-cheats, #avancar {
+    background-color: #333;
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    margin-bottom: 20px; /* Espaçamento consistente entre os botões */
+    box-sizing: border-box; /* Garante que o padding não afete o tamanho total */
+}
+
+#show-combinations:hover, #show-cheats:hover, #avancar:hover {
+    background-color: #555;
+    transform: scale(1.05);
+}
+
+#show-combinations:focus, #show-cheats:focus, #avancar:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.3);
+}
+
+
+.popup {
+    display: none; /* Inicialmente escondido */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fundo escurecido */
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Estilo para o conteúdo do popup */
+.popup-content {
+    background-color: #fff; /* Cor de fundo branco */
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 90%;
+    width: 400px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Sombra mais suave */
+    position: relative;
+    overflow-y: auto;
+    max-height: 80vh; /* Limita a altura do popup */
+    font-family: Arial, sans-serif; /* Fonte mais limpa */
+}
+
+/* Estilo para o botão de fechar do popup */
+.popup-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 22px;
+    color: #333; /* Cor do ícone */
+    cursor: pointer;
+    transition: color 0.3s ease; /* Transição suave na cor */
+}
+
+.popup-close:hover {
+    color: #555; /* Cor mais clara no hover */
+}
+
+/* Estilo para o título do popup */
+.popup-content h2 {
+    margin-top: 0;
+    font-size: 20px;
+    color: #333; /* Cor do texto */
+    font-weight: 600; /* Texto mais forte */
+    border-bottom: 1px solid #ddd; /* Linha sutil abaixo do título */
+    padding-bottom: 10px;
+}
+
+/* Estilo para a lista de combinações */
+.popup-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.popup-content ul li {
+    font-size: 16px; /* Tamanho da fonte */
+    color: #555; /* Cor do texto */
+    padding: 10px 15px; /* Ajusta o padding */
+    border-bottom: 1px solid #eee; /* Borda inferior mais clara */
+    transition: background-color 0.2s ease; /* Transição suave de fundo */
+}
+
+.popup-content ul li:hover {
+    background-color: #f7f7f7; /* Cor de fundo no hover */
+}
+
+.popup-content ul li:last-child {
+    border-bottom: none; /* Remove a borda do último item */
+}
+
+/* Estilo para o botão dentro do popup */
+.popup-content button {
+    background-color: #333;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    margin-top: 20px; /* Espaço acima do botão */
+    display: block; /* Alinha o botão ao centro */
+    width: 100%;
+}
+
+.popup-content button:hover {
+    background-color: #555;
+    transform: scale(1.05);
+}
+
+.popup-content button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.3);
+}
+
+
+
+#show-combinations {
+    background-color: #333;
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    margin-bottom: 20px; /* Space between button and popup content */
+}
+
+#show-combinations:hover {
+    background-color: #555;
+    transform: scale(1.05);
+}
+
+#show-combinations:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.3);
+}
+
+
+/* Estilo para o formulário dentro do popup */
+#cheats-popup .popup-content form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+#cheats-popup button {
+    background-color: #333;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    margin-top: 10px;
+}
+
+#cheats-popup button:hover {
+    background-color: #555;
+    transform: scale(1.05);
+}
+
+#cheats-popup button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.3);
+}
+
+/* Estilo para o botão Avançar dentro do popup */
+#advance-button {
+    background-color: #777; /* Cor padrão (inativo) */
+    color: #ccc; /* Cor do texto (inativo) */
+    cursor: not-allowed; /* Cursor para botão inativo */
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+#advance-button:enabled {
+    background-color: #333; /* Cor quando ativado */
+    color: white; /* Cor do texto quando ativado */
+    cursor: pointer; /* Cursor para botão ativado */
+}
+
+#advance-button:enabled:hover {
+    background-color: #555;
+    transform: scale(1.05);
+}
+
+#advance-button:enabled:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.3);
 }
 

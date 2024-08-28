@@ -1,19 +1,93 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HUMANOS</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
+    <div id="menu-button">MENU</div>
+    <div id="menu-modal">
+        <button id="show-combinations">Todas as combinações</button>
+        <button id="show-cheats">Cheats</button>
+        <button id="avancar">Avançar no tempo</button>
+    </div>
+    <div id="advance-popup" class="popup">
+        <div class="popup-content">
+            <span class="popup-close">&times;</span>
+            <h2>Avançar no Tempo</h2>
+            <p>ALERTA: Ao clicar em avançar quando estiver disponível, não terá volta. Você decidirá o destino da humanidade e seu fim.</p>
+            <button id="advance-button" disabled>AVANÇAR!</button>
+        </div>
+    </div>
+       
+    <div id="cheats-popup" class="popup">
+        <div class="popup-content">
+            <span class="popup-close">&times;</span>
+            <h2>Cheats</h2>
+            <form id="cheats-form">
+                <div class="form-group">
+                    <label for="guerra">Guerra:</label>
+                    <input type="number" id="guerra" name="guerra" min="0" step="1">
+                </div>
+                <div class="form-group">
+                    <label for="paz">Paz:</label>
+                    <input type="number" id="paz" name="paz" min="0" step="1">
+                </div>
+                <div class="form-group">
+                    <label for="deus">Deus:</label>
+                    <input type="number" id="deus" name="deus" min="0" step="1">
+                </div>
+                <button type="submit">Aplicar</button>
+            </form>
+        </div>
+    </div>    
+    <div id="combinations-popup" class="popup">
+        <div class="popup-content">
+            <span class="popup-close">&times;</span>
+            <h2>Combinações</h2>
+            <ul>
+                <li>Tecnologia</li>
+                <li>Maquinas</li>
+                <li>Computador</li>
+                <li>Armas</li>
+                <li>IMD (Easter egg)</li>
+                <li>Computação</li>
+                <li>Filosofia</li>
+                <li>Ferramentas sofisticadas</li>
+                <li>Guerra nuclear</li>
+                <li>Sociedade</li>
+                <li>Dinheiro</li>
+                <li>Ética</li>
+                <li>Armas avançadas</li>
+                <li>Energia nuclear</li>
+                <li>Templo religioso</li>
+                <li>Armas nucleares</li>
+                <li>Crime</li>
+                <li>Conscientização</li>
+                <li>Educação</li>
+                <li>Equidade</li>
+                <li>Justiça</li>
+                <li>Paz mundial</li>
+                <li>Controle de massas</li>
+                <li>Livro sagrado</li>
+                <li>Conexão espiritual</li>
+                <li>Teologia</li>
+                <li>Líderes religiosos</li>
+                <li>Construções</li>
+            </ul>
+        </div>
+    </div>
     <div id="progress-bar-container">
         <div id="progress-bar"></div>
     </div>
     <div id="hotbar">
         <div class="hotbar-item-container">
             <img src="elementos/conhecimento.png" class="hotbar-item" draggable="true" id="conhecimento"
-                data-tipo="paz" />
+                data-tipo="neutro" />
             <span class="hotbar-item-name">Conhecimento</span>
         </div>
         <div class="hotbar-item-container">
@@ -26,11 +100,11 @@
             <span class="hotbar-item-name">Energia</span>
         </div>
         <div class="hotbar-item-container">
-            <img src="elementos/ambicao.png" class="hotbar-item" draggable="true" id="ambicao" data-tipo="guerra" />
+            <img src="elementos/ambicao.png" class="hotbar-item" draggable="true" id="ambicao" data-tipo="neutro" />
             <span class="hotbar-item-name">Ambição</span>
         </div>
         <div class="hotbar-item-container">
-            <img src="elementos/fe.png" class="hotbar-item" draggable="true" id="fe" data-tipo="paz" />
+            <img src="elementos/fe.png" class="hotbar-item" draggable="true" id="fe" data-tipo="neutro" />
             <span class="hotbar-item-name">Fé</span>
         </div>
     </div>
