@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LARGADO!</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            opacity: 0; /* Começa invisível */
+            transition: opacity 3s ease-in; /* Fade in em 3 segundos */
+        }
+
+        .lapide {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .lapide h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .lapide p {
+            font-size: 18px;
+            line-height: 1.5;
+            font-weight: bold;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="lapide">
+        <h1>FINAL 3: Final neutro</h1>
+        <p>"A paz começa com um sorriso." - Madre Teresa de Calcutá, foi uma freira católica albanesa e missionária conhecida por seu trabalho humanitário entre os pobres e doentes na cidade de Calcutá, na Índia.</p>
+        <p>O mundo finalmente alcançou a paz mundial, parabéns! Pena que o egoísmo humano não fez tão bem a um ser poderoso tão jovem. Com a falta de fé, seus poderes enfraqueceram, e você nunca soube o fim dessa história. Vá em paz, viajante cósmico. Em seus últimos suspiros, você proclamou o Elemix.</p>
+    </div>
+
+    <script>
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '1'; // Torna o body visível após o carregamento
+        });
+    </script>
+</body>
+</html>

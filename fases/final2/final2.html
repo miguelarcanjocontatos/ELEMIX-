@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MONSTRO!</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            opacity: 0; /* Começa invisível */
+            transition: opacity 3s ease-in; /* Fade in em 3 segundos */
+        }
+
+        .lapide {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .lapide h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .lapide p {
+            font-size: 18px;
+            line-height: 1.5;
+            font-weight: bold;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="lapide">
+        <h1>FINAL 2: Final Ruim</h1>
+        <p>"Não sei como será a terceira guerra mundial, mas sei como será a quarta: com pedras e paus" - Albert Einstein</p>
+        <p>O mundo foi completamente dizimado; não sobrou ninguém... Ninguém se lembrou de você. As duas últimas almas vivas neste planeta lutaram ferozmente pelo último pedaço de barro com bolachas. Que decepção... Você poderia ter feito tudo de outra forma. Seu egoísta vaidoso, você preferiu definhar e morrer vendo um planeta, antes verde e azul, perecer em chamas.</p>
+    </div>
+
+    <script>
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '1'; // Torna o body visível após o carregamento
+        });
+    </script>
+</body>
+</html>

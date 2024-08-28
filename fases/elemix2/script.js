@@ -372,9 +372,9 @@ function atualizarWallpaper() {
     const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
 
-    if (guerra > paz+1) {
+    if (guerra > paz + 1) {
         canvas.style.backgroundImage = "url('elementos/guerra.jpg')";
-    } else if (paz > guerra+1) {
+    } else if (paz > guerra + 1) {
         canvas.style.backgroundImage = "url('elementos/paz.jpg')";
     } else {
         canvas.style.backgroundImage = "url('elementos/natureza_capa.jpg')"; // Imagem padrão se guerra e paz forem iguais ou não houver predominância
@@ -494,7 +494,7 @@ document.getElementById('cheats-form').addEventListener('submit', function (e) {
 // Função para atualizar o estado do botão "Avançar"
 function atualizarBotaoAvancar() {
     const advanceButton = document.getElementById('advance-button');
-    if ((guerra === 7 || paz === 8) && deus >= 0) {
+    if (guerra === 7 || paz === 8) {
         advanceButton.disabled = false;
         advanceButton.style.backgroundColor = '#333'; // Cor quando ativado
         advanceButton.style.color = 'white'; // Cor do texto quando ativado
@@ -510,14 +510,20 @@ function atualizarBotaoAvancar() {
 
 // Função para lidar com o clique no botão "Avançar"
 document.getElementById('advance-button').addEventListener('click', function () {
-    if (guerra === 7 && deus === 9) {
-        window.location.href = 'final4.html';
-    } else if (paz === 8 && deus === 9) {
-        window.location.href = 'final5.html';
-    } else if (guerra === 7 && deus <= 8) {
-        window.location.href = 'final2.html';
-    } else if (paz === 8 && deus <= 8) {
-        window.location.href = 'final3.html';
+    if (guerra === 7 && deus === 9 && paz < 8) {
+        window.location.href = '../final4/final4.html';
+    } else if (paz === 8 && deus === 9 && guerra < 7) {
+        window.location.href = '../final5/final5.html';
+    } else if (guerra === 7 && deus <= 8 && paz < 8) {
+        window.location.href = '../final2/final2.html';
+    } else if (paz === 8 && deus <= 8 && guerra < 7) {
+        window.location.href = '../final3/final3.html';
+    }
+    else if (paz === 8 && guerra === 7 && deus > 0) {
+        window.location.href = '../final6/final6.html';
+    }
+    else {
+        window.location.href = '../final7/final7.html';
     }
 });
 
@@ -539,6 +545,85 @@ window.addEventListener('click', function (e) {
     }
 });
 
+let lastHotbarHtml = document.getElementById('hotbar').innerHTML;
+let noActivityTimer = 0;
+const CHECK_INTERVAL = 1000; // Intervalo de verificação em milissegundos
+const NO_ACTIVITY_THRESHOLD = 12; // Tempo sem atividade antes de exibir a mensagem (em segundos)
+
+// Função para verificar se novos elementos foram adicionados à hotbar
+function verificarNovaAdicao() {
+    const hotbar = document.getElementById('hotbar');
+    const currentHotbarHtml = hotbar.innerHTML;
+
+    if (currentHotbarHtml !== lastHotbarHtml) {
+        lastHotbarHtml = currentHotbarHtml;
+        noActivityTimer = 0; // Reinicia o temporizador
+    } else {
+        noActivityTimer++;
+        if (noActivityTimer >= NO_ACTIVITY_THRESHOLD) { // Verifica se passaram 15 segundos sem novas adições
+            exibirMensagemAleatoria();
+            noActivityTimer = 0; // Reinicia o temporizador após exibir a mensagem
+        }
+    }
+}
+
+
+const itensDisponiveis = [
+    "Tecnologia, Ambição + ?",
+    "Maquinas, Energia + ?",
+    "Computador, Ferramentas sofisticadas + ?",
+    "Armas, Ferramentas Sofisticadas + ?",
+    "Computação, Energia + ?",
+    "Ferramentas sofisticadas, Conhecimento + ?",
+    "Guerra nuclear, Ambição + ?",
+    "Sociedade, Dinheiro + ?",
+    "Dinheiro, Ambição + ?",
+    "Ética, Filosofia + ?",
+    "Armas avançadas, Tecnologia + ?",
+    "Energia nuclear, Energia + ?",
+    "Templo religioso, Construção + ?",
+    "Armas nucleares, Armas Avançadas + ?",
+    "Crime, Sociedade + ?",
+    "Conscientização, Ética + ?",
+    "Educação, Conscientização + ?",
+    "Equidade, Educação + ?",
+    "Justiça, Ética + ?",
+    "Paz mundial, Justiça + ?",
+    "Controle de massas, Filosofia + ?",
+    "Livro sagrado, Ferramentas + ?",
+    "Conexão espiritual, Livro Sagrado + ?",
+    "Teologia, Filosofia + ?",
+    "Líderes religiosos, Sociedade + ?",
+    "Construções, Máquina + ?"
+];
+
+function exibirMensagemAleatoria() {
+    const hotbarItems = document.querySelectorAll('#hotbar .hotbar-item-name');
+    const itensCriados = Array.from(hotbarItems).map(item => item.innerText.trim().toLowerCase());
+
+    // Função auxiliar para normalizar o nome do item
+    function normalizarNome(nome) {
+        return nome.split(',')[0].trim().toLowerCase();
+    }
+
+    // Filtra itens que ainda não foram criados
+    const itensNaoCriados = itensDisponiveis.filter(item => {
+        const nomeItem = normalizarNome(item);
+        return !itensCriados.some(criado => criado.includes(nomeItem));
+    });
+
+    if (itensNaoCriados.length > 0) {
+        const dica = itensNaoCriados[Math.floor(Math.random() * itensNaoCriados.length)];
+        exibirMensagem(`DICA: Ainda dá para fazer ${dica}`);
+    } else {
+        exibirMensagem("Você ainda está aí?");
+    }
+}
+
+
+
+// Verifica a hotbar a cada 1 segundo
+setInterval(verificarNovaAdicao, CHECK_INTERVAL);
 
 
 desenharelementos();
