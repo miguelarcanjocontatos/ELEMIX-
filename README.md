@@ -1,5 +1,3 @@
----
-
 # ELEMIX - Jogo de Criação Elemental
 
 **ELEMIX** é um jogo interativo onde você assume o papel de uma entidade divina com o poder de criar e combinar elementos para formar novos itens, criaturas e ambientes. A partir de quatro elementos básicos — Fogo, Terra, Água e Ar —, você pode misturá-los para criar combinações mais complexas e até mesmo descobrir um easter egg especial.
@@ -39,5 +37,3 @@
 - **Canvas**: Espaço central de criação, onde os elementos são arrastados e combinados.
 - **Lixeira**: Ícone de lixeira no canto inferior direito, usado para limpar o canvas.
 - **Barra de Progresso**: Indicador visual de avanço no jogo, exibido no topo da tela.
-
----
