@@ -1,5 +1,3 @@
-Claro! Vou criar uma versão estilizada do README para o GitHub do seu projeto ELEMIX. Vou incluir títulos, seções bem definidas e formatação que facilita a leitura e compreensão.
-
 ---
 
 # ELEMIX - Jogo de Criação Elemental
@@ -43,5 +41,3 @@ Claro! Vou criar uma versão estilizada do README para o GitHub do seu projeto E
 - **Barra de Progresso**: Indicador visual de avanço no jogo, exibido no topo da tela.
 
 ---
-
-Esse formato organiza as informações de maneira clara e proporciona uma leitura mais agradável. Se precisar de mais alguma coisa, é só me falar!
